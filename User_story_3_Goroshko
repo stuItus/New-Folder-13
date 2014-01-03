@@ -1,0 +1,53 @@
+#include "stdafx.h"
+#include <glut.h> 
+
+float WinWid=400.0;
+float WinHei=400.0;
+
+void Draw()
+{
+	float a = 0, b = 0;
+	glClear(GL_COLOR_BUFFER_BIT);	
+	for(int i=0; i<6; i++)
+	{
+		glBegin(GL_LINE_LOOP);
+		glColor3f(0.0, 1.0, 0.0);	
+		glVertex2f(-30+b, 0+a);	//a
+		glVertex2f(-30+b, 8+a);	//b
+		glVertex2f(30-b, 8+a);	//c
+		glVertex2f(30-b, 0+a);	//d
+		a += 8;
+		b += 5;
+		glEnd();
+		glFlush();
+	}
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(-3, -15);
+	glVertex2f(-3, 0);
+	glVertex2f(3, 0);
+	glVertex2f(3, -15);
+	glEnd();
+	glFlush();
+}
+void Initialize()
+{
+	glClearColor(1.0, 1.0, 1.0, 1.0);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(-WinWid/2, WinHei/2, -WinWid/2, WinHei/2, -200.0, 200.0);
+}
+
+int main(int argc, char **argv) 
+{
+	//Ініціалізація
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+	glutInitWindowSize(300,300);
+	glutInitWindowPosition(300,100);
+	glutCreateWindow("Christmas tree");
+	//Реєстрація
+	glutDisplayFunc(Draw);
+	Initialize();
+	glutMainLoop();
+	return 0;
+}
