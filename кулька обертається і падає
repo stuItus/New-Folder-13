@@ -1,0 +1,82 @@
+// OK.cpp: определяет точку входа для консольного приложения.
+//
+
+
+#include "stdafx.h"
+#include <GL/glut.h>
+#include "math.h"
+#include "time.h"
+
+
+// розміри вікна
+float WinWid=400.0;
+float WinHei=400.0;
+float Angle=0.0;
+
+
+//функція малювання
+void Draw() 
+{
+        glClear(GL_COLOR_BUFFER_BIT); //малювання фону
+		glColor3f(0.0, 0.0, 0.0);
+		glPushMatrix();
+		glRotatef(Angle, 0,0,1);
+	GLUquadricObj * cylinder;
+	cylinder=gluNewQuadric();
+	gluQuadricDrawStyle(cylinder,GLU_LINE);
+	gluCylinder(cylinder,20.0,20.0,0.1,100,4);
+		glEnd();
+		glRotatef(Angle, 0,0,0);
+			glBegin(GL_LINES);
+			glVertex2f(-14,14);
+			glVertex2f(14,-14);
+			glVertex2f(14, 14);
+			glVertex2f(-14, -14);
+	    
+		glEnd();
+		glPopMatrix();
+        glutSwapBuffers();
+}
+
+void Timer (int)
+{
+	
+	++Angle;	
+	glTranslatef(0.0,-2.0,0.0);
+	
+
+	//Draw();
+	glutPostRedisplay();
+	glutTimerFunc(5, Timer, 0);
+}
+
+
+//функція ініціалізації
+void Initialize()
+{
+glClearColor(1.0, 1.0, 1.0, 1.0);  //колір очистки
+glMatrixMode(GL_PROJECTION);  //матриця проекцій
+glLoadIdentity(); //зброс матриці до одиничної
+glOrtho(-WinWid/2, WinWid/2, -WinHei/2, WinHei/2, -200.0, 200.0); //сітка проекції
+glMatrixMode(GL_MODELVIEW);
+}
+
+
+int main(int argc, char **argv) 
+{
+	//ініціалізація
+	glutInit(&argc, argv);  // інійіалізація
+	glutInitDisplayMode(GLUT_DOUBLE	| GLUT_RGB); //режим роботи дисплея
+	glutInitWindowSize(WinWid,WinHei);  //розмір вікна
+	glutInitWindowPosition(100,200); //позиція вікна від лівого верхнього краю
+	glutCreateWindow("Кульки");  //створення вікна
+	
+	//реєстрація
+	glutDisplayFunc(Draw); //малювання
+	glutTimerFunc(5, Timer, 0);//час анімації
+	Initialize();  // інійіалізація
+	glutMainLoop(); //головний цикл
+
+	return 0;
+}
+
