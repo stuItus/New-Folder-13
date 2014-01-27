@@ -1,0 +1,237 @@
+#include "stdafx.h"
+#include <GL/glut.h>
+
+float WinWid=1200.0;
+float WinHei=600.0;
+float  y1=0, y2=0, y3=0, y4=0, y5=0;
+int z1=0, xx1=0, yy1=0, z5=0;
+int N=0;
+double t = 50;
+
+void Draw()
+{
+        glClear(GL_COLOR_BUFFER_BIT);
+        glColor3f(0.0, 0.0, 0.0);
+                                                                                                                                       //Початок Робота
+                                glBegin(GL_LINE_STRIP);
+        glVertex2f(-510+z1, 255);
+        glVertex2f(-510+z1, 200);
+        glVertex2f(-340+z1, 200);
+        glVertex2f(-340+z1, 255);
+                        glEnd();
+
+                                glBegin(GL_LINE_STRIP);
+        glVertex2f(-490+z1, 200+y1);
+        glVertex2f(-482+z1, 155+y1);
+        glVertex2f(-368+z1, 155+y1);
+        glVertex2f(-360+z1, 200+y1);
+                        glEnd();
+						y1++;
+	if(y1>45)
+{
+y1--;
+}
+                                glBegin(GL_LINE_STRIP);
+        glVertex2f(-467+z1, 155+y2);
+        glVertex2f(-459+z1, 115+y2);
+        glVertex2f(-391+z1, 115+y2);
+        glVertex2f(-383+z1, 155+y2);
+                        glEnd();
+						y2++;
+	if(y2>85)
+{
+y2--;
+}
+                                glBegin(GL_LINE_STRIP);
+        glVertex2f(-444+z1, 115+y3);
+        glVertex2f(-436+z1, 75+y3);
+        glVertex2f(-414+z1, 75+y3);
+        glVertex2f(-406+z1, 115+y3);
+                        glEnd();
+						y3++;
+	if(y3>125)
+{
+y3--;
+}
+                                glBegin(GL_LINE_STRIP);
+        glVertex2f(-430+z1, 75+y4);
+        glVertex2f(-430+z1, -100+y4);
+        glVertex2f(-420+z1, -100+y4);
+        glVertex2f(-420+z1, 75+y4);
+                        glEnd();
+y4++;
+	if(y4>300)
+{
+y4--;
+}
+			
+                                                                glBegin(GL_LINE_STRIP);
+        glVertex2f(-440+z1, -100+y5);
+        glVertex2f(-410+z1, -100+y5);
+        glVertex2f(-403+z1, -107+y5);
+        glVertex2f(-403+z1, -137+y5);
+        glVertex2f(-410+z1, -137+y5);
+        glVertex2f(-410+z1, -109.5+y5);
+        glVertex2f(-412.5+z1, -107+y5);
+        glVertex2f(-437.5+z1, -107+y5);
+        glVertex2f(-440+z1, -109.5+y5);
+        glVertex2f(-440+z1, -137+y5);
+        glVertex2f(-447+z1, -137+y5);
+        glVertex2f(-447+z1, -107+y5);
+        glVertex2f(-440+z1, -100+y5);
+                        glEnd(); 
+					
+y5++;
+	if(y5>299)
+{
+y5--;
+}
+
+																																	//Кінець робота
+                                                                                                         //Початок планки
+                                glBegin(GL_LINE_STRIP);
+        glVertex2f(-585, 270);
+        glVertex2f(585, 270);
+        glVertex2f(585, 255);
+        glVertex2f(-585, 255);
+        glVertex2f(-585, 270);
+                        glEnd();
+                                                                glBegin(GL_LINE_STRIP);
+        glVertex2f(-575, 255);
+        glVertex2f(-575, 230);
+        glVertex2f(-565, 230);
+        glVertex2f(-565, 255);
+                        glEnd();
+                                                                 glBegin(GL_LINE_STRIP);
+        glVertex2f(575, 255);
+        glVertex2f(575, 230);
+        glVertex2f(565, 230);
+        glVertex2f(565, 255);
+                        glEnd();
+                                                                glBegin(GL_LINE_STRIP);
+        glVertex2f(-565, 250);
+        glVertex2f(-563, 235);
+        glVertex2f(-561, 250);
+        glVertex2f(-559, 235);
+        glVertex2f(-557, 250);
+        glVertex2f(-555, 235);
+                        glEnd();
+                                                                glBegin(GL_LINE_STRIP);
+        glVertex2f(565, 250);
+        glVertex2f(563, 235);
+        glVertex2f(561, 250);
+        glVertex2f(559, 235);
+        glVertex2f(557, 250);
+        glVertex2f(555, 235);
+                        glEnd();
+                                                                                                                                     //Кінець планки
+
+                                                                                                                                     //Початок ялинки
+                glColor3f(0.0, 1.0, 0.0);
+                                glBegin(GL_LINE_STRIP);
+        glVertex2f(410, -187);
+        glVertex2f(410, -217);
+        glVertex2f(430, -217);
+        glVertex2f(430, -187);
+                        glEnd();
+float z = 0, x = 0;
+for(int i=0; i<6; i++)
+        {
+                                                                glBegin(GL_LINE_LOOP);
+        glColor3f(0.0, 1.0, 0.0);
+        glVertex2f(260+x, -187+z); //a
+        glVertex2f(260+x, -167+z); //b
+        glVertex2f(580-x, -167+z); //c
+        glVertex2f(580-x, -187+z); //d
+        z += 30;
+        x += 30;
+                                                glEnd();
+        }
+                                                                                                                          //Кінець ялинки
+
+                                                                                                                          //Підлога початок
+                                                                glBegin(GL_LINE_STRIP);
+        glColor3f(0.0, 0.0, 0.0);
+        glVertex2f(-600, -217);
+        glVertex2f(600, -217);
+                                                glEnd();
+                                                                                                                                                                                 //Підлога кінець
+                       
+                                                                                                                                                                                                                                                 //Початок кульок
+ float a = 0, b = 0,c = 0, d = 0;
+ glPushMatrix();
+ glColor3f(0.0f,0.0f,1.0f);
+ glTranslatef(-379, -202.0, 0.0);
+for(int i=0; i<2; i++) //цикл для НЕПАРНИХ кульок
+ {
+GLUquadricObj * cylinder;
+cylinder=gluNewQuadric();
+gluQuadricDrawStyle(cylinder,GLU_LINE);
+
+glTranslatef(0.0-a, 0.0, 0.0);
+gluCylinder(cylinder,15.0,15.0,0.1,100,4);
+glTranslatef(0.0+a-a/4, 0.0+b, 0.0);
+gluCylinder(cylinder,15.0,15.0,0.1,100,4);
+glTranslatef(0.0-a, 0.0, 0.0);
+gluCylinder(cylinder,15.0,15.0,0.1,100,4);
+glTranslatef(0.0+a/4, 0.0+b, 0.0);
+gluCylinder(cylinder,15.0,15.0,0.1,100,4);
+a += 60;
+b += 25;
+ }
+for(int i=0; i<2; i++) //цикл для ПАРНИХ кульок
+ {
+GLUquadricObj * cylinder;
+cylinder=gluNewQuadric();
+gluQuadricDrawStyle(cylinder,GLU_LINE);
+glTranslatef(0.0+c/2, 0.0-2*d, 0.0);
+gluCylinder(cylinder,15.0,15.0,0.1,100,4);
+glTranslatef(0.0-c, 0.0, 0.0);
+gluCylinder(cylinder,15.0,15.0,0.1,100,4);
+glTranslatef(0.0+c-c/4, 0.0+d, 0.0);
+gluCylinder(cylinder,15.0,15.0,0.1,100,4);
+glTranslatef(0.0+c/4, 0.0+d, 0.0);
+gluCylinder(cylinder,15.0,15.0,0.1,100,4);
+glTranslatef(0.0-c/4, 0.0+d, 0.0);
+gluCylinder(cylinder,15.0,15.0,0.1,100,4);
+c += 60;
+d += 25;
+ }
+glEnd();                                                                                                                                                                                                                        //Кінець кульок
+glPopMatrix();
+glutSwapBuffers();
+}
+void Timer(int)
+{ 
+				if(z1<904&&N==0){z1+=1;}//вбік
+                if(z1>902){N=1;}
+                if(N==1&&z1>-54){z1-=1;}//вбік
+	glutPostRedisplay();
+	glutTimerFunc(5, Timer, 0);
+}
+void Initialize()
+{
+        glClearColor(1.0, 1.0, 1.0, 1.0);
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        glOrtho(-WinWid/2, WinWid/2, -WinHei/2, WinHei/2, -1.0, 1.0);
+		glMatrixMode(GL_MODELVIEW);
+}
+
+
+int main (int argc, char** argv)
+{
+        //Ініціалізація
+        glutInit(&argc, argv);
+        glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
+        glutInitWindowSize(WinWid,WinHei);
+        glutInitWindowPosition(100,200);
+        glutCreateWindow("Проект");
+        //Реєстрація
+        glutDisplayFunc(Draw);//Малювання
+        glutTimerFunc(5, Timer, 0);
+		Initialize();
+        glutMainLoop();
+
+        return 0;
+}
