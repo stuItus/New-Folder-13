@@ -59,7 +59,6 @@ void Draw()
         glVertex2f(-440+z1, -100+y5);
                         glEnd();
                                         
-y5++;
         
 		glBegin(GL_LINE_STRIP);
         glVertex2f(-510+z1, 255);
@@ -170,7 +169,7 @@ for(int i=0; i<6; i++)
         gluCylinder(cylinder,15.0,15.0,0.1,100,4); //третій рядок права кулька
 
 
-        glTranslatef(-15.0, 26.0, 0.0); //перехід до четвертого ряду
+        glTranslatef(-15.0+z1, 26.0+y5, 0.0); //перехід до четвертого ряду
         gluCylinder(cylinder,15.0,15.0,0.1,100,4); //верхня кулька
 
         glEnd();
@@ -179,6 +178,7 @@ for(int i=0; i<6; i++)
 }
 void Timer(int)
 {
+	y5++;
 	if(y5>300)
 {
 y5--;
