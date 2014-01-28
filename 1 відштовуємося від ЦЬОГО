@@ -4,91 +4,90 @@
 
  float WinWid=1200.0;
  float WinHei=600.0;
- float y3=0, y5=0;
- int z1=0, xx1=0, yy1=0, z5=0;
+ float y3=0, y5=0, y6=0, m=0;
+ int z1=0, z2=0;
  int N=0;
  double t=50;
- float x=0, h=1;
+ float h=1;
  float v=0;
  float Angle=0.0;
  
  void Draw()
  {
          glClear(GL_COLOR_BUFFER_BIT);
-         glColor3f(x, x, x);
+         glColor3f(0, 0, 0);
                                                                                                                                         //Початок Робота
                                  glBegin(GL_LINE_STRIP);
-         glVertex2f(-490+z1, 200+y5);
-         glVertex2f(-482+z1, 155+y5);
-         glVertex2f(-368+z1, 155+y5);
-         glVertex2f(-360+z1, 200+y5);
+         glVertex2f(-490+z1-z2, 200+y5-y6);
+         glVertex2f(-482+z1-z2, 155+y5-y6);
+         glVertex2f(-368+z1-z2, 155+y5-y6);
+         glVertex2f(-360+z1-z2, 200+y5-y6);
                          glEnd();
  
                                  glBegin(GL_LINE_STRIP);
-         glVertex2f(-467+z1, 155+y5);
-         glVertex2f(-459+z1, 115+y5);
-         glVertex2f(-391+z1, 115+y5);
-         glVertex2f(-383+z1, 155+y5);
+         glVertex2f(-467+z1-z2, 155+y5-y6);
+         glVertex2f(-459+z1-z2, 115+y5-y6);
+         glVertex2f(-391+z1-z2, 115+y5-y6);
+         glVertex2f(-383+z1-z2, 155+y5-y6);
                          glEnd();
  
                                  glBegin(GL_LINE_STRIP);
-         glVertex2f(-444+z1, 115+y5);
-         glVertex2f(-436+z1, 75+y5);
-         glVertex2f(-414+z1, 75+y5);
-         glVertex2f(-406+z1, 115+y5);
+         glVertex2f(-444+z1-z2, 115+y5-y6);
+         glVertex2f(-436+z1-z2, 75+y5-y6);
+         glVertex2f(-414+z1-z2, 75+y5-y6);
+         glVertex2f(-406+z1-z2, 115+y5-y6);
                          glEnd();
  
                                  glBegin(GL_LINE_STRIP);
-         glVertex2f(-430+z1, 75+y5);
-         glVertex2f(-430+z1, -100+y5);
-         glVertex2f(-420+z1, -100+y5);
-         glVertex2f(-420+z1, 75+y5);
+         glVertex2f(-430+z1-z2, 75+y5-y6);
+         glVertex2f(-430+z1-z2, -97+y5-y6);
+         glVertex2f(-420+z1-z2, -97+y5-y6);
+         glVertex2f(-420+z1-z2, 75+y5-y6);
                          glEnd();
  
-     glColor3f(0, 0, 0);
                     glBegin(GL_LINE_STRIP);
-         glVertex2f(-440+z1, -100+y5);
-         glVertex2f(-410+z1, -100+y5);
-         glVertex2f(-403+z1, -107+y5);
-         glVertex2f(-403+z1, -137+y5);
-         glVertex2f(-410+z1, -137+y5);
-         glVertex2f(-410+z1, -109.5+y5);
-         glVertex2f(-412.5+z1, -107+y5);
-         glVertex2f(-437.5+z1, -107+y5);
-         glVertex2f(-440+z1, -109.5+y5);
-         glVertex2f(-440+z1, -137+y5);
-         glVertex2f(-447+z1, -137+y5);
-         glVertex2f(-447+z1, -107+y5);
-         glVertex2f(-440+z1, -100+y5);
+         glVertex2f(-440+z1-z2, -97+y5-y6);
+         glVertex2f(-410+z1-z2, -97+y5-y6);
+         glVertex2f(-403+z1-z2, -104+y5-y6);
+         glVertex2f(-403+z1-z2, -134+y5-y6);
+         glVertex2f(-410+z1-z2, -134+y5-y6);
+         glVertex2f(-410+z1-z2, -106.5+y5-y6);
+         glVertex2f(-412.5+z1-z2, -104+y5-y6);
+         glVertex2f(-437.5+z1-z2, -104+y5-y6);
+         glVertex2f(-440+z1-z2, -106.5+y5-y6);
+         glVertex2f(-440+z1-z2, -134+y5-y6);
+         glVertex2f(-447+z1-z2, -134+y5-y6);
+         glVertex2f(-447+z1-z2, -104+y5-y6);
+         glVertex2f(-440+z1-z2, -97+y5-y6);
                          glEnd();
                                          
         
      glBegin(GL_LINE_STRIP);
-         glVertex2f(-510+z1, 255);
-         glVertex2f(-510+z1, 200);
-         glVertex2f(-340+z1, 200);
-         glVertex2f(-340+z1, 255);
+         glVertex2f(-510+z1-z2, 255);
+         glVertex2f(-510+z1-z2, 200);
+         glVertex2f(-340+z1-z2, 200);
+         glVertex2f(-340+z1-z2, 255);
                          glEnd();
                                          //білі квадрати
              glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
              glColor3f(1, 1, 1);
                  glBegin(GL_POLYGON);
-         glVertex2f(-509+z1, 255);
-         glVertex2f(-509+z1, 201);
-         glVertex2f(-349+z1, 201);
-         glVertex2f(-349+z1, 255);
+         glVertex2f(-509+z1-z2, 255);
+         glVertex2f(-509+z1-z2, 200.5);
+         glVertex2f(-349+z1-z2, 200.5);
+         glVertex2f(-349+z1-z2, 255);
                          glEnd();
              glBegin(GL_POLYGON);
-         glVertex2f(-509+z1, 305);
-         glVertex2f(-509+z1, 271);
-         glVertex2f(-349+z1, 271);
-         glVertex2f(-349+z1, 305);
+         glVertex2f(-509+z1-z2, 305);
+         glVertex2f(-509+z1-z2, 271);
+         glVertex2f(-349+z1-z2, 271);
+         glVertex2f(-349+z1-z2, 305);
                          glEnd();
              glBegin(GL_POLYGON);
-         glVertex2f(-509+z1, 270);
-         glVertex2f(-509+z1, 256);
-         glVertex2f(-349+z1, 256);
-         glVertex2f(-349+z1, 270);
+         glVertex2f(-509+z1-z2, 270);
+         glVertex2f(-509+z1-z2, 255);
+         glVertex2f(-349+z1-z2, 255);
+         glVertex2f(-349+z1-z2, 270);
                          glEnd();
                                          glColor3f(0, 0, 0); //Кінець робота
                                                                                                           //Початок планки
@@ -187,7 +186,7 @@
          GLUquadricObj * cylinder;
          cylinder=gluNewQuadric();
          gluQuadricDrawStyle(cylinder,GLU_LINE);
-         glTranslatef(30.0, 0.0, 0.0);
+         glTranslatef(30.0, m, 0.0);
          gluCylinder(cylinder,15.0,15.0,0.1,100,4); //третій рядок ліва кулька
          glTranslatef(30.0, 0.0, 0.0);
          gluCylinder(cylinder,15.0,15.0,0.1,100,4); //третій рядок права кулька
@@ -205,8 +204,6 @@
                         glVertex2f(10,-10);
                         glVertex2f(10, 10);
                         glVertex2f(-10, -10);
-            
- 
          glEnd();
          glPopMatrix();
          glutSwapBuffers();
@@ -217,7 +214,6 @@
    if(y5>299)
  {
  y5--;
- x=1;
  if(z1<904&&N==0){z1+=1;}//вбік вправо
  if(z1>842)
  {
@@ -226,20 +222,28 @@
        ++Angle; h--;
      if(y3<-177)
    {
-	   h=1;
-	--Angle;
+	 h=1;
+	 z2++;
+	 --Angle;
      y3++;
      v--;
      if(v<(-146))
      {
        v++;
-    }
+     }
+	 if(z2>858.5)
+	 {
+		 z2--;
+		 y6++;
+		 if(y6>299)
+		 {
+			 y6--;
+			 m++;
+		 }
+	 }
    }
-   
  }
  }
-
- 
          glutPostRedisplay();
          glutTimerFunc(4, Timer, 0);
  }
