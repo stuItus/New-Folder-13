@@ -1,0 +1,353 @@
+#include "stdafx.h"
+#include <glut.h>
+#include <math.h>
+
+float WinWid=1200.0;
+float WinHei=600.0;
+float move_circle_down=0, one_move_up=0, move_robot_down=0, two_move_up=0, move_circle2_down=0, move_circle2_hand=0;
+int move_right=0, move_left=0, move_right1=0;
+int stop_robot_above_tree=0;
+float h=1, g=0, disappearance_line_stripple=0, b=1;
+float move_one_circle_arc=0, move_two_circle_arc=0;
+float Angle=0.0;
+double flight_circle_back_x = 0;
+int move_down = 0;
+double flight_circle_back_y = 0.0;
+
+void Draw()
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+	glColor3f(0, 0, 0); 
+	//Початок Робота
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-490+move_right-move_left+move_right1, 200+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-482+move_right-move_left+move_right1, 155+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-368+move_right-move_left+move_right1, 155+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-360+move_right-move_left+move_right1, 200+one_move_up-move_robot_down+two_move_up);
+	glEnd();
+
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-467+move_right-move_left+move_right1, 155+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-459+move_right-move_left+move_right1, 115+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-391+move_right-move_left+move_right1, 115+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-383+move_right-move_left+move_right1, 155+one_move_up-move_robot_down+two_move_up);
+	glEnd();
+
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-444+move_right-move_left+move_right1, 115+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-436+move_right-move_left+move_right1, 75+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-414+move_right-move_left+move_right1, 75+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-406+move_right-move_left+move_right1, 115+one_move_up-move_robot_down+two_move_up);
+	glEnd();
+
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-430+move_right-move_left+move_right1, 75+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-430+move_right-move_left+move_right1, -97+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-420+move_right-move_left+move_right1, -97+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-420+move_right-move_left+move_right1, 75+one_move_up-move_robot_down+two_move_up);
+	glEnd();
+
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-440+move_right-move_left+move_right1, -97+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-410+move_right-move_left+move_right1, -97+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-403+move_right-move_left+move_right1, -104+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-403+move_right-move_left+move_right1, -134+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-410+move_right-move_left+move_right1, -134+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-410+move_right-move_left+move_right1, -106.5+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-412.5+move_right-move_left+move_right1, -104+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-437.5+move_right-move_left+move_right1, -104+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-440+move_right-move_left+move_right1, -106.5+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-440+move_right-move_left+move_right1, -134+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-447+move_right-move_left+move_right1, -134+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-447+move_right-move_left+move_right1, -104+one_move_up-move_robot_down+two_move_up);
+	glVertex2f(-440+move_right-move_left+move_right1, -97+one_move_up-move_robot_down+two_move_up);
+	glEnd();
+
+
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-510+move_right-move_left+move_right1, 255);
+	glVertex2f(-510+move_right-move_left+move_right1, 200);
+	glVertex2f(-340+move_right-move_left+move_right1, 200);
+	glVertex2f(-340+move_right-move_left+move_right1, 255);
+	glEnd();
+	//білі квадрати
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glColor3f(1, 1, 1);
+	glBegin(GL_POLYGON);
+	glVertex2f(-509+move_right-move_left+move_right1, 255);
+	glVertex2f(-509+move_right-move_left+move_right1, 200.5);
+	glVertex2f(-349+move_right-move_left+move_right1, 200.5);
+	glVertex2f(-349+move_right-move_left+move_right1, 255);
+	glEnd();
+	glBegin(GL_POLYGON);
+	glVertex2f(-509+move_right-move_left+move_right1, 305);
+	glVertex2f(-509+move_right-move_left+move_right1, 271);
+	glVertex2f(-349+move_right-move_left+move_right1, 271);
+	glVertex2f(-349+move_right-move_left+move_right1, 305);
+	glEnd();
+	glBegin(GL_POLYGON);
+	glVertex2f(-509+move_right-move_left+move_right1, 270);
+	glVertex2f(-509+move_right-move_left+move_right1, 255);
+	glVertex2f(-349+move_right-move_left+move_right1, 255);
+	glVertex2f(-349+move_right-move_left+move_right1, 270);
+	glEnd();
+	glColor3f(0, 0, 0); //Кінець робота
+	//Початок планки
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-585, 270);
+	glVertex2f(585, 270);
+	glVertex2f(585, 255);
+	glVertex2f(-585, 255);
+	glVertex2f(-585, 270);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-575, 255);
+	glVertex2f(-575, 230);
+	glVertex2f(-565, 230);
+	glVertex2f(-565, 255);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(575, 255);
+	glVertex2f(575, 230);
+	glVertex2f(565, 230);
+	glVertex2f(565, 255);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(-565, 250);
+	glVertex2f(-563, 235);
+	glVertex2f(-561, 250);
+	glVertex2f(-559, 235);
+	glVertex2f(-557, 250);
+	glVertex2f(-555, 235);
+	glEnd();
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(565, 250);
+	glVertex2f(563, 235);
+	glVertex2f(561, 250);
+	glVertex2f(559, 235);
+	glVertex2f(557, 250);
+	glVertex2f(555, 235);
+	glEnd();
+	//Кінець планки
+
+	//Початок ялинки
+	glColor3f(0.0, 1.0, 0.0);	//зелений колір ялинки
+	glBegin(GL_LINE_STRIP);		// Стовбур ялинки
+	glVertex2f(410, -187);
+	glVertex2f(410, -217);
+	glVertex2f(430, -217);
+	glVertex2f(430, -187);
+	glEnd();
+	//Рисування гілок ялинки
+	float z = 0.0, x = 0.0;
+	for(int i=0; i<6; i++)
+	{
+		glBegin(GL_LINE_LOOP);
+		glColor3f(0.0, 1.0, 0.0);
+		glVertex2f(260+x, -187+z); //нижня ліва точка
+		glVertex2f(260+x, -167+z); //верхня ліва точка
+		glVertex2f(580-x, -167+z); //верхня права точка
+		glVertex2f(580-x, -187+z); //нижня права точка
+		z += 30;
+		x += 30;
+		glEnd();
+	}
+	//Кінець ялинки
+
+	//Підлога початок
+	glBegin(GL_LINE_STRIP);
+	glColor3f(0.0, 0.0, 0.0);
+	glVertex2f(-600, -217);
+	glVertex2f(600, -217);
+	glEnd();
+	//Підлога кінець
+
+	//Початок кульок
+	glPushMatrix();
+	glTranslatef(-500.0, -201.0, 0.0); //Позиціонування пірамідки з кульок
+	glColor3f(0.0f,0.0f,1.0f);
+	for(int i=0; i<4; i++) //цикл для першого ряду
+	{
+		GLUquadricObj * cylinder;
+		cylinder=gluNewQuadric();
+		gluQuadricDrawStyle(cylinder,GLU_LINE);
+		glTranslatef(30.0, 0.0, 0.0);
+		gluCylinder(cylinder,15.0,15.0,0.1,100,4);
+	}
+	glTranslatef(-105.0, 26.0, 0.0); //перехід до другого ряду
+	for(int i=0; i<3; i++) //цикл для другого ряду
+	{
+		GLUquadricObj * cylinder;
+		cylinder=gluNewQuadric();
+		gluQuadricDrawStyle(cylinder,GLU_LINE);
+		glTranslatef(30.0, 0.0, 0.0);
+		gluCylinder(cylinder,15.0,15.0,0.1,100,4);
+	}
+	glTranslatef(-75.0, 26.0, 0.0); //перехід до третього ряду
+
+
+	GLUquadricObj * cylinder;
+	cylinder=gluNewQuadric();
+	gluQuadricDrawStyle(cylinder,GLU_LINE);
+	glPushMatrix();
+	glTranslatef(30.0+move_right1, move_circle2_hand+two_move_up-move_circle2_down, 0.0);
+	glTranslatef(-move_two_circle_arc, -0.007*(move_two_circle_arc*move_two_circle_arc), 0.0);
+	glTranslatef(-flight_circle_back_x,flight_circle_back_y+move_down,0.0);                                                                                                                                           
+	gluCylinder(cylinder,15.0,15.0,0.1,100,4); //третій рядок ліва кулька
+	glColor3f(b, b, 1);
+	glRotatef(Angle, 0,0,1);
+	glBegin(GL_LINES);
+	glVertex2f(-10,10);
+	glVertex2f(10,-10);
+	glVertex2f(10, 10);
+	glVertex2f(-10, -10);
+	glEnd();
+	glPopMatrix();
+	glColor3f(0, 0, 1);
+	glTranslatef(60.0, 0.0, 0.0);
+	gluCylinder(cylinder,15.0,15.0,0.1,100,4); //третій рядок права кулька
+
+	glTranslatef(move_one_circle_arc, -0.007*(move_one_circle_arc*move_one_circle_arc), 0.0);
+	glTranslatef(0, -move_circle_down, 0.0);
+	glTranslatef(-15.0+move_right, 26.0+one_move_up, 0.0); //перехід до четвертого ряду
+	glTranslatef(-flight_circle_back_x,flight_circle_back_y+move_down,0.0);
+		gluCylinder(cylinder,15.0,15.0,0.1,100,4); //верхня кулька
+	glEnd();
+	glColor3f(h, h, 1);
+	glRotatef(Angle, 0,0,1);
+	glBegin(GL_LINES);
+	glVertex2f(-10,10);
+	glVertex2f(10,-10);
+	glVertex2f(10, 10);
+	glVertex2f(-10, -10);
+	glEnd();
+	glPopMatrix();
+	//штрихові лінії
+	glColor3f(g, g, g);
+	glPushAttrib(GL_ENABLE_BIT); 
+	glLineStipple(3, 0x00F0);
+	glEnable(GL_LINE_STIPPLE);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(419, 180);
+	glVertex2f(419, 180-move_circle_down);
+	glVertex2f(419+move_one_circle_arc, 180-move_circle_down-0.007*(move_one_circle_arc*move_one_circle_arc));
+	glEnd();
+
+	glColor3f(disappearance_line_stripple, disappearance_line_stripple, disappearance_line_stripple);
+	glBegin(GL_LINE_STRIP);
+	glVertex2f(419, 180);
+	glVertex2f(419, 180-move_circle2_down);
+	glVertex2f(419-move_two_circle_arc, 180-move_circle2_down-0.007*(move_two_circle_arc*move_two_circle_arc));
+	glEnd();
+
+	glPopAttrib();
+	glutSwapBuffers();
+}
+void Timer(int)
+{
+	one_move_up++;
+	if(one_move_up>295)
+	{
+		one_move_up--;
+		if(move_right<904&&stop_robot_above_tree==0){move_right+=1;}//вбік вправо
+		if(move_right>842)
+		{
+			stop_robot_above_tree=1;
+			move_circle_down++;
+			++Angle; h--;
+			if(move_circle_down>177)
+			{
+				h=1;
+				move_left++;
+				--Angle;
+				move_circle_down--;
+				move_one_circle_arc--;
+				/*if(flight_circle_back_x<692&&v<(-145))//692
+				{
+
+					flight_circle_back_x+=1;
+					flight_circle_back_y = 5E-10*pow(flight_circle_back_x,4) - 7E-07*pow(flight_circle_back_x,3)-0.0003*pow(flight_circle_back_x,2) + 0.4401*flight_circle_back_x + 2.2122;
+				}
+			if(flight_circle_back_x>691&&move_down>-20){move_down -=1;}*/
+					if(move_one_circle_arc<(-145))
+					{
+						move_one_circle_arc++;
+						g=1;
+					}
+					if(move_left>858.5)
+					{
+						move_left--;
+						move_robot_down++;
+						if(move_robot_down>296)
+						{
+							move_robot_down--;
+							move_circle2_hand++;
+							if(move_circle2_hand>26)
+							{
+								move_circle2_hand--;
+								two_move_up++;
+								if(two_move_up>295)
+								{
+									two_move_up--;
+									move_right1++;
+									if(move_right1>860)
+									{
+										move_right1--;
+										move_circle2_down++;
+										Angle++;
+										b=0;
+										if(move_circle2_down>173)
+										{ 
+											b=1;
+											move_circle2_down--;
+											move_two_circle_arc--;
+											if(flight_circle_back_x<1006&&move_two_circle_arc<(-147))//692
+											{
+
+												flight_circle_back_x+=1;
+												flight_circle_back_y = 2E-10*pow(flight_circle_back_x,4) - 4E-07*pow(flight_circle_back_x,3)-0.0002*pow(flight_circle_back_x,2) + 0.4401*flight_circle_back_x + 2.8758;
+											}
+											if(flight_circle_back_x>1005&&move_down>-37){move_down -= 1;}
+											if(move_two_circle_arc<(-147))
+											{
+												move_two_circle_arc++;
+												disappearance_line_stripple =1;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		glutPostRedisplay();
+		glutTimerFunc(5, Timer, 0);
+	}
+	void Initialize()
+	{
+		glClearColor(1.0, 1.0, 1.0, 1.0);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(-WinWid/2, WinWid/2, -WinHei/2, WinHei/2, -1.0, 1.0);
+		glMatrixMode(GL_MODELVIEW);
+	}
+
+
+	int main (int argc, char** argv)
+	{
+		//Ініціалізація
+		glutInit(&argc, argv);
+		glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
+		glutInitWindowSize(WinWid,WinHei);
+		glutInitWindowPosition(100,200);
+		glutCreateWindow("Проект");
+		//Реєстрація
+		glutDisplayFunc(Draw);//Малювання
+		glutTimerFunc(5, Timer, 0);
+		Initialize();
+		glutMainLoop();
+
+		return 0;
+	}
